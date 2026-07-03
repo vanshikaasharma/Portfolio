@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #16213a;
+  --surface: #1c2c4a;
+  --card: #21304d;
+  --card-hover: #283a5c;
+  --foreground: #f5f4f1;
+  --muted: #b6c0d6;
+  --subtle: #7c88a3;
+  --border: rgba(245, 244, 241, 0.09);
+  --accent: #9a111f;
+  --accent-hover: #b81627;
+  --accent-soft: rgba(154, 17, 31, 0.16);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.bg-glow {
+  background-image:
+    radial-gradient(
+      ellipse 60% 50% at 20% 0%,
+      var(--accent-soft) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 100% 30%,
+      rgba(182, 192, 214, 0.08) 0%,
+      transparent 60%
+    );
+}
+
+.text-gradient {
+  background: linear-gradient(
+    120deg,
+    var(--foreground) 0%,
+    var(--foreground) 55%,
+    var(--accent-hover) 130%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shadow-soft {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 12px 32px -12px rgba(0, 0, 0, 0.45);
+}
+
+.shadow-soft-lg {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 28px 60px -16px rgba(0, 0, 0, 0.55);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
