@@ -40,23 +40,23 @@ export function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 rounded-full bg-accent p-1.5 md:flex">
+        <nav className="hidden items-center gap-0.5 rounded-full bg-accent p-1.5 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm text-foreground/85 transition-colors hover:bg-card/20 hover:text-foreground"
+              className="rounded-full px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-card/20 hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden w-[120px] md:block" aria-hidden />
+        <div className="hidden w-[140px] lg:block" aria-hidden />
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted md:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -81,7 +81,7 @@ export function Navbar() {
       </Container>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-border bg-background/95 backdrop-blur-md lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <a

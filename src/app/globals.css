@@ -12,6 +12,19 @@
   --accent: #9a111f;
   --accent-hover: #b81627;
   --accent-soft: rgba(154, 17, 31, 0.16);
+  --accent-glow: rgba(154, 17, 31, 0.55);
+}
+
+/* Scoped palette flip: burgundy <-> navy, used to invert a single section */
+.palette-inverted {
+  --background: #7a0f1c;
+  --surface: #8c1420;
+  --card: #9a111f;
+  --card-hover: #b81627;
+  --accent: #1c2c4a;
+  --accent-hover: #2e4576;
+  --accent-soft: rgba(28, 44, 74, 0.35);
+  --accent-glow: rgba(28, 44, 74, 0.55);
 }
 
 @theme inline {

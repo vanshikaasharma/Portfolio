@@ -38,8 +38,8 @@ const codeLines = [
     text: (
       <>
         <span className="text-foreground/70">focus</span>: [
-        <span className="text-[#c3e88d]">&quot;architecture&quot;</span>,{" "}
-        <span className="text-[#c3e88d]">&quot;DX&quot;</span>],
+        <span className="text-[#c3e88d]">&quot;full-stack&quot;</span>,{" "}
+        <span className="text-[#c3e88d]">&quot;data&quot;</span>],
       </>
     ),
   },
