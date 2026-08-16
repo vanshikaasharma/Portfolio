@@ -1,30 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #16213a;
-  --surface: #1c2c4a;
-  --card: #21304d;
-  --card-hover: #283a5c;
-  --foreground: #f5f4f1;
-  --muted: #b6c0d6;
-  --subtle: #7c88a3;
-  --border: rgba(245, 244, 241, 0.09);
-  --accent: #9a111f;
-  --accent-hover: #b81627;
-  --accent-soft: rgba(154, 17, 31, 0.16);
-  --accent-glow: rgba(154, 17, 31, 0.55);
+  /* Same palette, lifted: Chinese Black · American Blue · Ube · Cool Grey · Cadet Grey */
+  --background: #151c35;
+  --surface: #1c2544;
+  --card: #262f55;
+  --card-hover: #3a3e6c;
+  --foreground: #c8ccd9;
+  --muted: #959bb5;
+  --subtle: #8387c3;
+  --border: rgba(149, 155, 181, 0.16);
+  --accent: #3a3e6c;
+  --accent-hover: #8387c3;
+  --accent-soft: rgba(131, 135, 195, 0.28);
+  --accent-glow: rgba(131, 135, 195, 0.55);
 }
 
-/* Scoped palette flip: burgundy <-> navy, used to invert a single section */
+/* Scoped palette flip: American Blue <-> lifted Chinese Black */
 .palette-inverted {
-  --background: #7a0f1c;
-  --surface: #8c1420;
-  --card: #9a111f;
-  --card-hover: #b81627;
-  --accent: #1c2c4a;
-  --accent-hover: #2e4576;
-  --accent-soft: rgba(28, 44, 74, 0.35);
-  --accent-glow: rgba(28, 44, 74, 0.55);
+  --background: #3a3e6c;
+  --surface: #4a4f7d;
+  --card: #565b8a;
+  --card-hover: #6469a0;
+  --accent: #151c35;
+  --accent-hover: #262f55;
+  --accent-soft: rgba(21, 28, 53, 0.4);
+  --accent-glow: rgba(21, 28, 53, 0.55);
 }
 
 @theme inline {
@@ -67,7 +68,7 @@ body {
     ),
     radial-gradient(
       ellipse 50% 40% at 100% 30%,
-      rgba(182, 192, 214, 0.08) 0%,
+      rgba(149, 155, 181, 0.14) 0%,
       transparent 60%
     );
 }

@@ -1,102 +1,133 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "../Reveal";
-import { ArrowUpRightIcon, GitHubIcon } from "../icons";
-import { projects, type Project } from "@/lib/site";
+import { ArrowUpRightIcon } from "../icons";
+import {
+  projectCategories,
+  type Project,
+  type ProjectCategory,
+} from "@/lib/site";
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  // Even: image left, text right, bridge to left margin
-  // Odd:  text left, image right, bridge to right margin
-  const imageOnLeft = index % 2 === 0;
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  const href = `/projects/${project.slug}`;
 
   return (
-    <Reveal delay={index * 0.08} className="group relative">
-      {/* red bridge connects to the written/text side on hover */}
-      <div
-        className={`pointer-events-none absolute inset-y-0 right-full z-0 w-screen bg-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
-          imageOnLeft ? "md:hidden" : ""
-        }`}
-      />
-      <div
-        className={`pointer-events-none absolute inset-y-0 left-full z-0 w-screen bg-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
-          imageOnLeft ? "" : "md:hidden"
-        }`}
-      />
+    <Reveal delay={index * 0.05} className="h-full">
+      <article className="group relative flex h-full flex-col rounded-[26px] bg-card p-6 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent sm:p-7">
+        <Link
+          href={href}
+          className="absolute inset-0 z-0 rounded-[26px]"
+          aria-label={`View ${project.title}`}
+        />
 
-      <div
-        className={`relative z-10 flex overflow-hidden rounded-[26px] bg-card transition-[background-color,border-radius] duration-300 group-hover:bg-accent group-hover:rounded-none ${
-          imageOnLeft
-            ? "flex-col md:flex-row md:group-hover:rounded-r-none md:group-hover:rounded-l-[26px]"
-            : "flex-col md:flex-row-reverse md:group-hover:rounded-l-none md:group-hover:rounded-r-[26px]"
-        }`}
-      >
-        {/* image */}
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden md:aspect-auto md:w-1/2 md:min-h-[280px]">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
-            />
-          ) : (
-            <div className="flex h-full min-h-[200px] w-full items-center justify-center bg-gradient-to-br from-[#2a4068] via-card to-accent transition-all duration-500 group-hover:scale-105 group-hover:from-accent group-hover:via-accent-hover group-hover:to-card group-hover:brightness-110 md:min-h-[280px]">
-              <span className="font-serif text-3xl font-semibold text-foreground/40">
-                {project.title}
-              </span>
-            </div>
-          )}
-        </div>
-
-        {/* text */}
-        <div className="flex flex-1 flex-col justify-center p-7 md:p-10">
-          <h3 className="mb-3 flex items-center gap-1.5 font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+        <div className="relative z-10 pointer-events-none flex flex-1 flex-col">
+          <h3 className="font-serif text-2xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-foreground sm:text-[1.65rem]">
             {project.title}
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${project.title} live demo`}
-                className="inline-flex"
-              >
-                <ArrowUpRightIcon className="h-4 w-4 text-accent transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-card" />
-              </a>
-            )}
           </h3>
 
-          <p className="mb-6 text-[15px] leading-relaxed text-muted transition-colors duration-300 group-hover:text-foreground/85">
-            {project.description}
-          </p>
-
-          <div className="flex items-end justify-between gap-4">
-            <div className="flex flex-wrap gap-2.5">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-accent px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors duration-300 group-hover:bg-card"
-                >
-                  {tag}
-                </span>
-              ))}
+          <div className="mt-5 flex flex-1 flex-col gap-5">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-subtle transition-colors duration-300 group-hover:text-foreground/55">
+                Overview
+              </p>
+              <p className="mt-2 text-[14px] leading-relaxed text-muted transition-colors duration-300 group-hover:text-foreground/85 sm:text-[15px]">
+                {project.description}
+              </p>
             </div>
 
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${project.title} on GitHub`}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-muted transition-all duration-300 group-hover:text-foreground hover:bg-card"
-              >
-                <GitHubIcon className="h-4 w-4" />
-              </a>
-            )}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-subtle transition-colors duration-300 group-hover:text-foreground/55">
+                Highlights
+              </p>
+              <ul className="mt-2 space-y-1.5">
+                {project.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/90 sm:text-[15px]"
+                  >
+                    <span className="shrink-0 text-subtle" aria-hidden>
+                      →
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-subtle transition-colors duration-300 group-hover:text-foreground/55">
+                Built With
+              </p>
+              <p className="mt-2 text-sm tracking-wide text-muted transition-colors duration-300 group-hover:text-foreground/80">
+                {project.tags.join(" · ")}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center gap-3 border-t border-border pt-5 transition-colors duration-300 group-hover:border-foreground/15">
+            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
+              View Project
+              <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
           </div>
         </div>
-      </div>
+      </article>
     </Reveal>
+  );
+}
+
+function CategoryBlock({
+  category,
+  index,
+}: {
+  category: ProjectCategory;
+  index: number;
+}) {
+  const alignEnd = index % 2 === 1;
+
+  return (
+    <div
+      id={category.id}
+      className="scroll-mt-28 border-t border-border pt-14 sm:pt-16"
+    >
+      <Reveal>
+        <div
+          className={`mb-8 max-w-2xl sm:mb-10 ${
+            alignEnd ? "md:ml-auto md:text-right" : ""
+          }`}
+        >
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-subtle">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            {category.title}
+          </h3>
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-subtle">
+            {category.subtitle}
+          </p>
+          <p
+            className={`mt-4 max-w-xl text-[15px] leading-relaxed text-muted ${
+              alignEnd ? "md:ml-auto" : ""
+            }`}
+          >
+            {category.description}
+          </p>
+        </div>
+      </Reveal>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        {category.projects.map((project, i) => (
+          <ProjectCard key={project.slug} project={project} index={i} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -106,22 +137,23 @@ export function Projects() {
       id="projects"
       className="relative scroll-mt-24 overflow-x-clip py-20 sm:py-28"
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-[30px] bg-accent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-[30px] bg-accent" />
-
-      <div className="mx-auto w-full px-[46px] sm:px-[54px]">
-        <div className="mb-14 flex flex-col gap-3">
+      <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
+        <Reveal className="mb-14 sm:mb-16">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-hover">
             Selected Work
           </span>
-          <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             Projects
           </h2>
-        </div>
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
+            A curated look at products, models, analyses, and interfaces —
+            organized by the kind of work each project represents.
+          </p>
+        </Reveal>
 
-        <div className="flex flex-col gap-4">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+        <div className="flex flex-col gap-6 sm:gap-8">
+          {projectCategories.map((category, i) => (
+            <CategoryBlock key={category.id} category={category} index={i} />
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Container } from "./Container";
+import { ArrowUpRightIcon } from "./icons";
 import { navLinks, site } from "@/lib/site";
 
 export function Navbar() {
@@ -31,7 +32,7 @@ export function Navbar() {
       }`}
     >
       <Container className="flex h-18 items-center justify-between py-3">
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="/#top" className="flex items-center gap-2.5">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-accent font-serif text-sm font-semibold text-foreground">
             {initials}
           </span>
@@ -52,32 +53,42 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden w-[140px] lg:block" aria-hidden />
+        <div className="flex items-center gap-2">
+          <a
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group hidden items-center gap-1.5 rounded-full border border-border bg-card/60 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-card lg:inline-flex"
+          >
+            Resume
+            <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted lg:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          <div className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-5 bg-current transition-transform ${
-                open ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-current transition-opacity ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-current transition-transform ${
-                open ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
-          </div>
-        </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted lg:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <div className="space-y-1.5">
+              <span
+                className={`block h-0.5 w-5 bg-current transition-transform ${
+                  open ? "translate-y-2 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 bg-current transition-opacity ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 bg-current transition-transform ${
+                  open ? "-translate-y-2 -rotate-45" : ""
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </Container>
 
       {open && (
@@ -93,6 +104,16 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="mt-1 inline-flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            >
+              Resume
+              <ArrowUpRightIcon className="h-3.5 w-3.5" />
+            </a>
           </Container>
         </div>
       )}

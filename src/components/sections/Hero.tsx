@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { Container } from "../Container";
-import { ArrowUpRightIcon, MailIcon } from "../icons";
+import { ArrowUpRightIcon, LinkedInIcon, MailIcon } from "../icons";
 import { site } from "@/lib/site";
 
 const codeLines = [
@@ -103,31 +103,44 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.25 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            className="mt-9 flex flex-col items-start gap-4"
           >
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-soft-lg"
-            >
-              View my work
-              <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-card"
-            >
-              <MailIcon className="h-4 w-4" />
-              Contact me
-            </a>
-            <a
-              href={site.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium text-muted transition-colors hover:text-foreground"
-            >
-              Resume
-              <ArrowUpRightIcon className="h-3.5 w-3.5" />
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/#projects"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-soft-lg"
+              >
+                View my work
+                <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={site.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-card"
+              >
+                Resume
+                <ArrowUpRightIcon className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href={site.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted transition-colors hover:border-accent/40 hover:bg-card hover:text-foreground"
+              >
+                <LinkedInIcon className="h-4 w-4" />
+              </a>
+              <a
+                href={`mailto:${site.email}`}
+                aria-label="Email"
+                className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted transition-colors hover:border-accent/40 hover:bg-card hover:text-foreground"
+              >
+                <MailIcon className="h-4 w-4" />
+              </a>
+            </div>
           </motion.div>
         </div>
 
@@ -169,7 +182,7 @@ export function Hero() {
       </Container>
 
       <motion.a
-        href="#projects"
+        href="/#projects"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
