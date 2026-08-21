@@ -2,7 +2,7 @@ export const site = {
   name: "Vanshika Sharma",
   role: "CS Student & Data Analyst",
   intro:
-    "Computer Science student at UBC building full-stack products and data-driven tools. Currently a Data Analyst Co-op at DarkVision Technologies, working across Python automation, ML workflows, and product QA.",
+    "Computer Science student at UBC building full-stack products and data-driven tools. Previously a Data Analyst Co-op at DarkVision Technologies, working across Python automation, ML workflows, and product QA.",
   email: "vanshikaasharmaa27@gmail.com",
   resumeUrl: "/resume.pdf",
   location: "Vancouver, BC",
@@ -23,37 +23,73 @@ export const navLinks = [
 export const about = {
   paragraphs: [
     "I'm a Computer Science student at the University of British Columbia with a focus on full-stack development, data analysis, and applied machine learning.",
-    "At DarkVision Technologies, I work with ultrasound pipeline data, collaborate with ML researchers, and help ship analyst-facing tooling. Outside class and work, I build products that solve real operational problems — from inventory systems to community platforms.",
+    "At DarkVision Technologies, I worked with ultrasound pipeline data, collaborated with ML researchers, and helped ship analyst-facing tooling. Outside class and work, I build products that solve real operational problems — from inventory systems to community platforms.",
     "I'm especially interested in roles where engineering, data, and product thinking overlap.",
   ],
   facts: [
     { label: "School", value: "UBC — BSc Computer Science" },
     { label: "Expected Grad", value: "May 2028" },
     { label: "Location", value: "Vancouver, BC" },
-    { label: "Currently", value: "Data Analyst Co-op @ DarkVision" },
+    { label: "Recent Role", value: "Data Analyst Co-op @ DarkVision" },
   ],
 } as const;
 
 export const skills: { category: string; items: string[] }[] = [
   {
     category: "Languages",
-    items: ["Java", "Python", "SQL", "R", "Julia", "HTML", "CSS", "C", "C++"],
+    items: [
+      "Python",
+      "TypeScript",
+      "Java",
+      "SQL",
+      "JavaScript",
+      "R",
+      "HTML",
+      "CSS",
+      "C",
+      "C++",
+    ],
   },
   {
     category: "Frameworks",
-    items: ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS"],
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "Flask",
+      "Vite",
+      "Tailwind CSS",
+      "Streamlit",
+      "Swing",
+    ],
+  },
+  {
+    category: "Data & ML",
+    items: [
+      "Pandas",
+      "NumPy",
+      "scikit-learn",
+      "XGBoost",
+      "SciPy",
+      "Seaborn",
+      "Matplotlib",
+      "Plotly",
+      "Folium",
+    ],
   },
   {
     category: "Tools",
     items: [
       "Git",
-      "VS Code",
       "Jupyter",
+      "VS Code",
       "Figma",
       "Tableau",
       "Power BI",
+      "PostgreSQL",
+      "SQLite",
       "LaTeX",
-      "Anaconda",
     ],
   },
 ];
@@ -68,6 +104,11 @@ export type Project = {
   images?: string[];
   liveUrl?: string;
   repoUrl?: string;
+  /** Shown on the project card when built at a competition */
+  hackathon?: {
+    name: string;
+    badge?: string;
+  };
   /** Optional media label for interactive / XR / Unity work */
   media?: "web" | "unity" | "xr" | "spatial" | "interactive";
   detail?: {
@@ -151,24 +192,31 @@ export const projectCategories: ProjectCategory[] = [
         slug: "e-restaurant-manager",
         title: "E-Restaurant Manager",
         description:
-          "An operations platform for restaurants to manage menus, orders, and day-to-day service workflows in one connected system.",
+          "A Java desktop application for restaurant management, reservations, ordering, and reviews.",
         highlights: [
-          "Centralized menu and order management",
-          "Service workflows built for daily restaurant operations",
-          "Connected systems view for front-of-house and kitchen needs",
+          "Owner tools for restaurants, menus, and review visibility",
+          "Customer flows for browsing, reservations, orders, and ratings",
+          "JSON file persistence with event logging across system changes",
         ],
-        tags: ["Full-Stack", "Systems", "Web"],
-        detail: {
-          summary:
-            "E-Restaurant Manager brings menu, order, and service coordination into a single platform designed for operational clarity.",
-          process:
-            "Focused on restaurant service loops first—menu updates, order handoff, and status visibility—before expanding into broader management tooling.",
-          technical:
-            "Structured as a full-stack web system with shared state across operational views and a modular foundation for future restaurant integrations.",
-          challenges:
-            "Keeping workflows fast and readable under real service pressure without overcomplicating the interface.",
-          outcomes:
-            "A grounded operations product concept for restaurants that reduces context-switching across daily service tasks.",
+        tags: ["Java", "Swing", "org.json", "JUnit"],
+        repoUrl: "https://github.com/vanshikaasharma/E-Restaurant-Manager",
+      },
+      {
+        slug: "fairforward",
+        title: "FairForward",
+        description:
+          "A legal support platform that connects people to AI guidance, safe spaces, pro bono lawyers, and educational resources.",
+        highlights: [
+          "Mr. Hootsworth AI assistant for Canadian legal guidance",
+          "Safe spaces map plus pro bono lawyer matching",
+          "Legal glossary, community support, and resource hub",
+        ],
+        tags: ["React", "TypeScript", "Flask", "Tailwind", "SQLite"],
+        repoUrl: "https://github.com/ParishaS2003/FairForward",
+        liveUrl: "https://devpost.com/software/fair-forward",
+        media: "web",
+        hackathon: {
+          name: "GNEC Hackathon 2025",
         },
       },
       {
@@ -208,74 +256,69 @@ export const projectCategories: ProjectCategory[] = [
         slug: "bc-collision-predictor",
         title: "BC Collision Predictor",
         description:
-          "An ML-powered platform that scores street-level crash risk from 953K+ ICBC records, with hotspot maps and municipality insights.",
+          "Lower Mainland ICBC crash analytics with XGBoost risk scoring, walk-forward holdout, and a Streamlit dashboard for hotspots and street lookup.",
         highlights: [
-          "Street-level crash risk scoring from large-scale ICBC data",
-          "Hotspot mapping for high-risk corridors",
-          "Municipality-facing insights through a Streamlit dashboard",
+          "~953k crash records cleaned into ~739k street/time contexts",
+          "XGBoost classifier and regressor with next-year holdout (ROC-AUC ~0.78)",
+          "Streamlit pages for maps, municipality analytics, and street risk lookup",
         ],
-        tags: ["Python", "XGBoost", "Streamlit", "Time Series"],
+        tags: ["Python", "XGBoost", "Streamlit", "Pandas", "Plotly"],
+        repoUrl:
+          "https://github.com/vanshikaasharma/bc-collision-risk-predictor",
         detail: {
           summary:
-            "BC Collision Predictor turns historical crash data into actionable street-level risk scores and visual intelligence for decision-makers.",
+            "BC Road Risk Intelligence Platform analyzes ICBC-reported crashes in the Lower Mainland (2021–2025), scores where and when risk clusters, and checks generalization with walk-forward next-year holdout.",
           process:
-            "Started from raw ICBC records, engineered spatial and temporal features, then translated model outputs into maps and municipal summaries.",
+            "Cleaned the ICBC export, grouped crashes into city/street/month/hour contexts with severity-weighted risk scores, trained classifier and regressor models, then shipped results in a multi-page Streamlit dashboard.",
           technical:
-            "Used Python and XGBoost for predictive modeling, with Streamlit for interactive exploration of risk scores and hotspot patterns.",
+            "Python pipeline with pandas, scikit-learn, XGBoost, joblib, Plotly, and Streamlit. Temporal holdout trains on past years and tests only the next year; dashboard models use all years for interactive street lookup.",
           challenges:
-            "Working across noisy geospatial records while keeping predictions interpretable enough for municipal use.",
+            "Framing risk at context level rather than per-driver, keeping holdout honest without leaking year into features, and turning large open-data exports into municipal-facing views.",
           outcomes:
-            "A predictive risk platform that surfaces collision hotspots and supports more informed local safety analysis.",
+            "A dashboard covering executive KPIs, hotspot maps, municipality comparisons, and street-level % high-risk plus activity score lookups, with stable holdout metrics across 2024 and 2025 tests.",
         },
       },
       {
-        slug: "aqx-sports",
-        title: "AQX Sports",
+        slug: "nba-mvp-predictor",
+        title: "NBA MVP Predictor",
         description:
-          "A sports intelligence project applying predictive modeling and performance data to surface patterns that support better decision-making.",
+          "Predicts MVP vote share from real NBA stats with a Streamlit dashboard for race cards, player comparison, and model insights.",
         highlights: [
-          "Predictive modeling on sports performance signals",
-          "Pattern discovery across player and match data",
-          "Decision-oriented insights for coaches and analysts",
+          "Random forest regression on vote share across 24 NBA seasons",
+          "Season-by-season cross-validation to avoid leaking future data",
+          "Interactive dashboard with radar charts, feature importance, and top-3 MVP race",
         ],
-        tags: ["Machine Learning", "Python", "Sports Analytics"],
+        tags: ["Python", "scikit-learn", "Streamlit", "Plotly", "Pandas"],
+        liveUrl: "https://devpost.com/software/nba-mvp-predictor",
+        hackathon: {
+          name: "AQX Sports Analytics Data Bowl",
+        },
         detail: {
           summary:
-            "AQX Sports explores how predictive models and performance data can turn athletic signals into clearer competitive insights.",
+            "NBA MVP Predictor estimates MVP vote share (0–100%) for qualified players each season, turning Basketball Reference stats into a data-backed MVP race dashboard.",
           process:
-            "Framed the problem around decision support, then experimented with feature sets and models that highlight meaningful performance patterns.",
+            "Scraped 24 seasons of player, team, and historical MVP voting data, compared linear, ridge, random forest, and gradient boosting models with temporal validation, then shipped results in Streamlit.",
           technical:
-            "Developed with Python-based machine learning workflows tailored to sports analytics use cases.",
+            "Built with Python, pandas, scikit-learn, Streamlit, and Plotly. Random forest led holdout metrics (R² ≈ 0.80) using 24 features spanning scoring, efficiency, playmaking, defense, and team win %.",
           challenges:
-            "Extracting stable, actionable signals from noisy performance data without overfitting to short-term variance.",
+            "Handling Basketball Reference HTML table changes across eras, framing MVP as a spectrum rather than a binary label, and making advanced stats readable in the UI.",
           outcomes:
-            "A sports intelligence direction focused on prediction, pattern recognition, and practical decision support.",
+            "A season explorer (2001–2024) that surfaces top candidates, compares players, and shows which stats the model weights most for MVP voting.",
         },
       },
       {
-        slug: "digital-health-studies",
-        title: "Digital Health Studies",
+        slug: "digital-health-technologies",
+        title: "Digital Health Technologies",
         description:
-          "A data-driven study of electronic prescription adoption across U.S. states, analyzing over 4 million healthcare records.",
+          "An academic study of U.S. electronic prescribing (eRx) adoption across urban and rural counties, prescription volume, and provider roles.",
         highlights: [
-          "Analysis of 4M+ healthcare records",
-          "Geographic and provider-type disparity findings",
-          "Clear visual storytelling for eRx adoption patterns",
+          "Higher eRx adoption in urban counties than rural ones",
+          "Prescription volume and eRx use rise together across states",
+          "NP and PA workforce mix should shape how eRx is rolled out",
         ],
-        tags: ["Python", "MongoDB", "SQL", "Matplotlib", "Seaborn"],
-        repoUrl: "https://github.com/vanshikaasharma/CPSC368_Project.git",
-        detail: {
-          summary:
-            "Digital Health Studies investigates how electronic prescription adoption varies across states and provider types using large-scale healthcare data.",
-          process:
-            "Combined database querying, statistical exploration, and visualization to move from raw records to disparity-focused findings.",
-          technical:
-            "Used Python with MongoDB and SQL for data access, alongside Matplotlib and Seaborn for analytical visualization.",
-          challenges:
-            "Making sense of a multi-million-record dataset while keeping geographic and provider comparisons rigorous and readable.",
-          outcomes:
-            "A study that clarifies where eRx adoption diverges and why those differences matter for digital health equity.",
-        },
+        tags: ["Python", "SQL", "Pandas", "SciPy", "Seaborn"],
+        repoUrl:
+          "https://github.com/vanshikaasharma/Digital-Health-Technologies",
       },
     ],
   },
@@ -310,61 +353,33 @@ export const projectCategories: ProjectCategory[] = [
             "A concise analytics narrative that supports better resort decision-making around visitors and operations.",
         },
       },
-    ],
-  },
-  {
-    id: "competitions",
-    title: "Competitions",
-    subtitle: "Hackathons · Datathons · Timed Builds",
-    description:
-      "Time-boxed competitions where product thinking, data, and engineering come together under pressure.",
-    projects: [
       {
-        slug: "orbitx-datathon",
-        title: "OrbitX Datathon",
+        slug: "orbitx-wildfire-risk",
+        title: "Wildfire Mapping and Analysis in Alberta",
         description:
-          "Mapped high-risk wildfire zones in Alberta using NASA satellite data and Canadian burn-area boundaries to support community preparedness.",
+          "Maps Alberta wildfires from NASA FIRMS MODIS data, joins climate records, and surfaces patterns that matter for preparedness.",
         highlights: [
-          "Winner at UBC Orbit OrbitX Datathon",
-          "Integrated NASA MODIS/VIIRS wildfire data",
-          "Proposed early-warning ideas for community response",
+          "Folium map of Alberta wildfire detections from NASA FIRMS",
+          "City-level risk view plus lightning vs human-cause trends",
+          "Climate merges and factor analysis for LT, RC, and RS drivers",
         ],
-        tags: ["Machine Learning", "Geospatial", "Python"],
-        detail: {
-          summary:
-            "OrbitX Datathon focused on translating satellite and burn-area data into wildfire risk maps and preparedness recommendations for Alberta communities.",
-          process:
-            "Layered remote sensing data with local boundary and population context to identify high-risk zones and communication opportunities.",
-          technical:
-            "Built geospatial analysis workflows in Python, combining wildfire observations with climate and vegetation signals.",
-          challenges:
-            "Aligning heterogeneous geospatial datasets into a coherent risk narrative that communities could act on.",
-          outcomes:
-            "A datathon-winning direction for early warning and wildfire preparedness grounded in satellite intelligence.",
+        tags: ["Python", "Pandas", "Folium", "scikit-learn", "Seaborn"],
+        repoUrl: "https://github.com/vanshikaasharma/orbitX-datathon",
+        hackathon: {
+          name: "OrbitX Datathon",
+          badge: "Winner",
         },
-      },
-      {
-        slug: "gnec-hackathon-2025",
-        title: "GNEC Hackathon 2025",
-        description:
-          "Built a full-stack legal assistance platform with an AI chatbot, anonymous peer support, and lawyer matching focused on gender equality and reduced inequalities.",
-        highlights: [
-          "AI chatbot for real-time legal guidance and resources",
-          "Anonymous community support and lawyer matching",
-          "Engagement-focused product flows for social-impact users",
-        ],
-        tags: ["Full-Stack", "AI", "SDG"],
         detail: {
           summary:
-            "GNEC Hackathon 2025 centered on building a legal assistance product that combines AI guidance, peer support, and lawyer matching around equity-focused SDG themes.",
+            "OrbitX Datathon winning project that maps Alberta wildfire occurrences with NASA Natural Hazards data and historical climate records to support better preparation, response, and recovery.",
           process:
-            "Scoped user needs around access to legal information, then mapped chatbot, community, and matching flows into a cohesive product experience.",
+            "Filtered MODIS Canada detections to Alberta bounds, cleaned and explored brightness and confidence signals, labeled nearest cities with geopy, merged monthly climate stations, and visualized hotspots with Folium and Seaborn.",
           technical:
-            "Delivered as a full-stack application with AI-assisted guidance and role-aware support features for seekers and community participants.",
+            "Jupyter workflow with pandas, numpy, scikit-learn (RandomForestClassifier pipeline), matplotlib, seaborn, Folium, and geopy. Datasets include NASA FIRMS MODIS and Alberta climate station CSVs.",
           challenges:
-            "Balancing anonymity, trust, and useful guidance inside a short hackathon build window.",
+            "Aligning satellite detections with climate stations across space and time, and turning noisy geospatial joins into clear community-facing insights.",
           outcomes:
-            "A social-impact platform concept that paired legal support with community connection and measurable engagement improvements.",
+            "Interactive Alberta wildfire map, city distribution views, and analysis highlighting lightning, recreation, and residents as key drivers, with a long-run drop in burned area and a rise in human-caused incidents.",
         },
       },
     ],
@@ -380,82 +395,52 @@ export const projectCategories: ProjectCategory[] = [
         slug: "neighbourhood-notebook",
         title: "Neighbourhood Notebook",
         description:
-          "A community-centered interface for capturing and sharing local stories, designed around clarity, trust, and everyday usability.",
+          "A mobile UX concept that helps short-term residents in Vancouver discover authentic local spots through a travel-journal metaphor, vibe filters, and familiar review patterns.",
         highlights: [
-          "Local storytelling flows built for everyday use",
-          "Interface patterns centered on trust and clarity",
-          "Community sharing without unnecessary complexity",
+          "Filter, bookmark, review, and publishable notebook flows in mid-fi Figma",
+          "Lo-fi sketches and cognitive walkthroughs before a 9-participant usability study",
+          "Wizard-of-Oz search/recs; polished notebooks and ratings for trust cues",
         ],
-        tags: ["UI/UX", "HCI", "Product Design"],
+        tags: ["UI/UX", "HCI", "Figma", "Usability Testing"],
+        repoUrl: "https://github.com/vanshikaasharma/Neighbourhood-Notebook",
+        liveUrl:
+          "https://www.figma.com/proto/Ewt68oRb8tzPgGn85Pppo4/Neighborhood-Notebook-Mid-fi-Prototype?node-id=15-1489&t=Uc3F0lKNuIxisSzu-1",
         media: "web",
         detail: {
           summary:
-            "Neighbourhood Notebook is an interface concept for communities to collect and share local stories in a calm, trustworthy way.",
+            "Neighbourhood Notebook is a mid-fi mobile prototype for short-term residents who need authentic Vancouver discovery without cognitive overload, framed as a personal travel notebook.",
+          problem:
+            "Newcomers and short-term residents have limited time and local knowledge. Dense travel apps make it hard to find trustworthy, personalised places quickly.",
+          solution:
+            "A journal-metaphor interface with neighbourhood collections, a Wander Feed, feeling-based filters, ratings, reviews, and save flows designed for on-the-go use.",
           process:
-            "Grounded the design in HCI principles—low friction contribution, readable browsing, and cues that support community trust.",
+            "Shark Tank pitch, lo-fi sketches, cognitive walkthroughs, prototyping plan (core vs Wizard-of-Oz features), 3 pilots, mid-fi Figma, then a 9-participant usability study.",
           technical:
-            "Explored as a product design and interaction system with room to extend into web, interactive media, or future spatial formats.",
+            "Designed in Figma with FigJam concepting. Core flows were interactive; search and recommendations were Wizard-of-Oz for study scenarios. Evaluation used think-aloud observation and a Qualtrics post-task questionnaire.",
           challenges:
-            "Making contribution feel welcoming without creating noisy or overwhelming community feeds.",
+            "Piloting exposed Wander Feed discoverability, crowded feeling filters, and review-entry confusion. Those were fixed before the main study. Remote laptop sessions limited mobile-specific observation.",
           outcomes:
-            "A clear product direction for neighbourhood storytelling with a flexible foundation for future interactive work.",
+            "Participants generally found filtering and reviewing intuitive. Recommendations include tighter filters, price range, tag cleanup, and places like ones you have loved elsewhere.",
+          nextSteps:
+            "Prioritise cross-city affinity recommendations, refine emotion-filter IA, and validate remaining flows on real mobile devices.",
         },
       },
       {
         slug: "leftover-love",
         title: "Leftover Love",
         description:
-          "A food-sharing platform that connects providers with recipients through listings, emergency requests, and map-based location services.",
+          "A hyperlocal food-sharing web app that connects surplus groceries with nearby seekers before expiry.",
         highlights: [
-          "Role-based flows for providers and recipients",
-          "Real-time listings and emergency request support",
-          "Map-based discovery for nearby food sharing",
+          "Provider and seeker roles for listing and claiming food",
+          "Expiry-aware listings with map-based pickup discovery",
+          "Soil Credits when surplus is redirected to community partners",
         ],
-        tags: [
-          "React",
-          "TypeScript",
-          "Tailwind CSS",
-          "Context API",
-          "OpenStreetMap",
-        ],
+        tags: ["React", "TypeScript", "Vite", "Tailwind", "OpenStreetMap"],
         repoUrl: "https://github.com/vanshikaasharma/LeftoverLove",
+        liveUrl: "https://devpost.com/software/leftover-love-bw94ok",
         media: "web",
-        detail: {
-          summary:
-            "Leftover Love connects food providers and recipients through a practical sharing platform designed around urgency, location, and trust.",
-          process:
-            "Designed role-based journeys first, then layered listing, request, and mapping features around real food-sharing scenarios.",
-          technical:
-            "Built with React, TypeScript, Tailwind CSS, Context API state management, and OpenStreetMap for location services.",
-          challenges:
-            "Supporting both everyday listings and emergency requests without making the interface feel chaotic.",
-          outcomes:
-            "A usable community food-sharing product that pairs social impact goals with clear interaction design.",
-        },
-      },
-      {
-        slug: "fairforward",
-        title: "FairForward",
-        description:
-          "An interactive experience focused on equitable access and user-centered flows at the intersection of design and human-computer interaction.",
-        highlights: [
-          "Equity-centered interaction design",
-          "User flows shaped around access and clarity",
-          "Interactive experience bridging product and HCI",
-        ],
-        tags: ["UI/UX", "HCI", "Interactive"],
-        media: "interactive",
-        detail: {
-          summary:
-            "FairForward explores how interactive product design can support more equitable access through carefully considered user flows.",
-          process:
-            "Used HCI framing to evaluate access barriers, then translated those insights into interaction patterns and experience structure.",
-          technical:
-            "Positioned as an interactive experience with a flexible media model that can grow into web, Unity, XR, or spatial work over time.",
-          challenges:
-            "Keeping equity goals concrete in interaction decisions rather than treating them as abstract principles.",
-          outcomes:
-            "A design-led interactive project that connects usability, access, and human-centered product thinking.",
+        hackathon: {
+          name: "youCode 2025",
         },
       },
     ],
@@ -506,7 +491,7 @@ export const experience: Experience[] = [
     company: "DarkVision Technologies Inc.",
     role: "Data Analyst",
     type: "Co-op",
-    period: "May 2026 – Present",
+    period: "May 2026 – Aug 2026",
     metaLabel: "Built With",
     tags: [
       "Python",
@@ -591,12 +576,12 @@ export const hackathons: Hackathon[] = [
     period: "Apr 2025",
     badge: "Winner",
     description:
-      "Used NASA MODIS/VIIRS wildfire data and Canadian burn-area boundaries to map high-risk wildfire zones in Alberta and propose early-warning ideas for community preparedness.",
-    tags: ["Machine Learning", "Geospatial", "Python"],
+      "Mapped Alberta wildfires from NASA FIRMS MODIS data, joined climate records, and surfaced lightning, recreation, and resident drivers for community preparedness.",
+    tags: ["Python", "Pandas", "Folium", "scikit-learn", "Seaborn"],
     highlights: [
-      "Analyzed NASA satellite wildfire data with Canadian National Fire Database boundaries",
-      "Integrated climate, vegetation, and population datasets for risk assessment",
-      "Proposed early warning solutions for community response",
+      "Built an interactive Folium map of Alberta wildfire detections",
+      "Merged MODIS points with monthly climate station data",
+      "Highlighted LT, RC, and RS as key occurrence factors",
     ],
   },
   {

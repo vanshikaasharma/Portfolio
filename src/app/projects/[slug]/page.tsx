@@ -16,7 +16,17 @@ type PageProps = {
 
 export function generateStaticParams() {
   return getAllProjects()
-    .filter((project) => project.slug !== "rackd")
+    .filter(
+      (project) =>
+        project.slug !== "rackd" &&
+        project.slug !== "e-restaurant-manager" &&
+        project.slug !== "digital-health-technologies" &&
+        project.slug !== "leftover-love" &&
+        project.slug !== "fairforward" &&
+        project.slug !== "orbitx-wildfire-risk" &&
+        project.slug !== "bc-collision-predictor" &&
+        project.slug !== "neighbourhood-notebook",
+    )
     .map((project) => ({ slug: project.slug }));
 }
 
