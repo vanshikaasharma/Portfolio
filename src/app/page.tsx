@@ -13,8 +13,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
-      {/* Education temporarily hidden — restore <Education /> when ready */}
-      {/* Hackathons folded into Projects → Competitions — restore <Hackathons /> if needed */}
+      {/* Education temporarily hidden - restore <Education /> when ready */}
       <Contact />
     </main>
   );

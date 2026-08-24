@@ -1,8 +1,8 @@
 export const site = {
   name: "Vanshika Sharma",
-  role: "CS Student & Data Analyst",
+  role: "CS Student at UBC",
   intro:
-    "Computer Science student at UBC building full-stack products and data-driven tools. Previously a Data Analyst Co-op at DarkVision Technologies, working across Python automation, ML workflows, and product QA.",
+    "Computer Science student at UBC learning by building full-stack products and data-driven tools. Previously a Data Analyst Co-op at DarkVision Technologies, working across Python automation, ML workflows, and product QA.",
   email: "vanshikaasharmaa27@gmail.com",
   resumeUrl: "/resume.pdf",
   location: "Vancouver, BC",
@@ -22,17 +22,157 @@ export const navLinks = [
 
 export const about = {
   paragraphs: [
-    "I'm a Computer Science student at the University of British Columbia with a focus on full-stack development, data analysis, and applied machine learning.",
-    "At DarkVision Technologies, I worked with ultrasound pipeline data, collaborated with ML researchers, and helped ship analyst-facing tooling. Outside class and work, I build products that solve real operational problems — from inventory systems to community platforms.",
-    "I'm especially interested in roles where engineering, data, and product thinking overlap.",
+    "I'm a Computer Science student at UBC drawn to software that helps communities thrive and makes everyday connection feel easier.",
+    "I treat every project as a chance to stretch: ship something real, listen closely, and improve it. My time at DarkVision sharpened how I work with data and teams, and that same drive shows up in the products I build on my own.",
+    "I stay curious, move with intention, and keep learning in public. I want the things I make to matter to someone beyond myself.",
   ],
   facts: [
-    { label: "School", value: "UBC — BSc Computer Science" },
+    { label: "School", value: "UBC - BSc Computer Science with AI" },
     { label: "Expected Grad", value: "May 2028" },
     { label: "Location", value: "Vancouver, BC" },
-    { label: "Recent Role", value: "Data Analyst Co-op @ DarkVision" },
+    { label: "Recent Role", value: "Data Analyst at DarkVision" },
   ],
 } as const;
+
+export type StampInk = "gold" | "ube" | "pink" | "cadet" | "vermilion";
+
+export type TravelStamp = {
+  place: string;
+  region: string;
+  year: string;
+  note?: string;
+  ink: StampInk;
+  /** degrees of rotation for a pressed-ink look */
+  tilt?: number;
+  icon:
+    | "usa"
+    | "canada"
+    | "japan"
+    | "singapore"
+    | "russia"
+    | "dubai"
+    | "india"
+    | "london"
+    | "malaysia"
+    | "thailand"
+    | "hongkong"
+    | "macau";
+  subtext?: string;
+};
+
+/** Places collected in the About passport stamp book. 12 countries (6 per row). */
+export const travelStamps: TravelStamp[] = [
+  // Row 1 (6 destinations)
+  {
+    place: "USA",
+    region: "USA · ENTRY",
+    year: "VISA",
+    note: "United States",
+    ink: "gold",
+    tilt: -5,
+    icon: "usa",
+  },
+  {
+    place: "CANADA",
+    region: "CAN · CAN",
+    year: "ENTRY",
+    note: "Great White North",
+    ink: "vermilion",
+    tilt: 4,
+    icon: "canada",
+  },
+  {
+    place: "JAPAN",
+    region: "NIPPON · 日本",
+    year: "2025",
+    note: "Tokyo & Kyoto",
+    ink: "pink",
+    tilt: -4,
+    icon: "japan",
+  },
+  {
+    place: "SINGAPORE",
+    region: "SGP · ENTRY",
+    year: "VISA",
+    note: "Lion City",
+    ink: "ube",
+    tilt: 5,
+    icon: "singapore",
+  },
+  {
+    place: "RUSSIA",
+    region: "RUS · РОССИЯ",
+    year: "ENTRY",
+    note: "Eurasia",
+    ink: "cadet",
+    tilt: -6,
+    icon: "russia",
+  },
+  {
+    place: "DUBAI",
+    region: "UAE · DXB",
+    year: "ENTRY",
+    note: "United Arab Emirates",
+    ink: "gold",
+    tilt: 4,
+    icon: "dubai",
+  },
+  // Row 2 (6 destinations)
+  {
+    place: "INDIA",
+    region: "IND · BHARAT",
+    year: "ENTRY",
+    note: "Subcontinent",
+    ink: "gold",
+    tilt: -4,
+    icon: "india",
+  },
+  {
+    place: "LONDON",
+    region: "UK · GBR",
+    year: "ENTRY",
+    note: "United Kingdom",
+    ink: "pink",
+    tilt: 5,
+    icon: "london",
+  },
+  {
+    place: "MALAYSIA",
+    region: "MYS · KUL",
+    year: "ENTRY",
+    note: "Southeast Asia",
+    ink: "ube",
+    tilt: -5,
+    icon: "malaysia",
+  },
+  {
+    place: "THAILAND",
+    region: "THA · SIAM",
+    year: "ENTRY",
+    note: "Land of Smiles",
+    ink: "vermilion",
+    tilt: 4,
+    icon: "thailand",
+  },
+  {
+    place: "HONG KONG",
+    region: "HKG · 香港",
+    year: "ENTRY",
+    note: "Pearl of the Orient",
+    ink: "pink",
+    tilt: -4,
+    icon: "hongkong",
+  },
+  {
+    place: "MACAU",
+    region: "MAC · 澳門",
+    year: "ENTRY",
+    note: "Historic Centre",
+    ink: "ube",
+    tilt: 5,
+    icon: "macau",
+  },
+];
 
 export const skills: { category: string; items: string[] }[] = [
   {
@@ -219,30 +359,6 @@ export const projectCategories: ProjectCategory[] = [
           name: "GNEC Hackathon 2025",
         },
       },
-      {
-        slug: "expense-tracker",
-        title: "Expense Tracker",
-        description:
-          "A personal finance application for logging spending, organizing categories, and reviewing financial patterns over time.",
-        highlights: [
-          "Fast expense logging and categorization",
-          "Clear views of spending patterns over time",
-          "Lightweight structure for ongoing personal budgeting",
-        ],
-        tags: ["Full-Stack", "Web", "Data"],
-        detail: {
-          summary:
-            "Expense Tracker helps individuals capture spending quickly and review where money goes without a heavyweight finance tool.",
-          process:
-            "Designed around the daily habit of logging expenses, then layered category organization and trend review for longer-term insight.",
-          technical:
-            "Built as a full-stack web application with a data model focused on transactions, categories, and time-based summaries.",
-          challenges:
-            "Balancing speed of entry with enough structure to make later analysis useful.",
-          outcomes:
-            "A simple, maintainable finance tracker that supports both quick capture and clearer spending reflection.",
-        },
-      },
     ],
   },
   {
@@ -263,11 +379,12 @@ export const projectCategories: ProjectCategory[] = [
           "Streamlit pages for maps, municipality analytics, and street risk lookup",
         ],
         tags: ["Python", "XGBoost", "Streamlit", "Pandas", "Plotly"],
+        image: "/projects/bc-collision-executive.png",
         repoUrl:
           "https://github.com/vanshikaasharma/bc-collision-risk-predictor",
         detail: {
           summary:
-            "BC Road Risk Intelligence Platform analyzes ICBC-reported crashes in the Lower Mainland (2021–2025), scores where and when risk clusters, and checks generalization with walk-forward next-year holdout.",
+            "BC Road Risk Intelligence Platform analyzes ICBC-reported crashes in the Lower Mainland (2021-2025), scores where and when risk clusters, and checks generalization with walk-forward next-year holdout.",
           process:
             "Cleaned the ICBC export, grouped crashes into city/street/month/hour contexts with severity-weighted risk scores, trained classifier and regressor models, then shipped results in a multi-page Streamlit dashboard.",
           technical:
@@ -319,39 +436,6 @@ export const projectCategories: ProjectCategory[] = [
         tags: ["Python", "SQL", "Pandas", "SciPy", "Seaborn"],
         repoUrl:
           "https://github.com/vanshikaasharma/Digital-Health-Technologies",
-      },
-    ],
-  },
-  {
-    id: "insights-analytics",
-    title: "Insights & Analytics",
-    subtitle: "Data Analysis · Visualization · Decision-Making",
-    description:
-      "Turning raw and complex datasets into clear insights, visual stories, and actionable recommendations.",
-    projects: [
-      {
-        slug: "ubc-bolt-peak-mountain-resort",
-        title: "UBC BOLT — Peak Mountain Resort",
-        description:
-          "An analytics engagement for Peak Mountain Resort that translates operational and visitor data into clear recommendations for decision-makers.",
-        highlights: [
-          "Operational and visitor data synthesis",
-          "Decision-ready recommendations for resort leadership",
-          "Visual storytelling tailored to business stakeholders",
-        ],
-        tags: ["Data Analysis", "Visualization", "Consulting"],
-        detail: {
-          summary:
-            "This UBC BOLT engagement helped Peak Mountain Resort turn operational and visitor data into insights leadership could use.",
-          process:
-            "Moved from exploratory analysis to stakeholder-facing recommendations, emphasizing clarity over complexity.",
-          technical:
-            "Combined data analysis and visualization techniques suited to consulting-style deliverables and executive review.",
-          challenges:
-            "Distilling messy operational data into a small set of recommendations that feel both credible and actionable.",
-          outcomes:
-            "A concise analytics narrative that supports better resort decision-making around visitors and operations.",
-        },
       },
       {
         slug: "orbitx-wildfire-risk",

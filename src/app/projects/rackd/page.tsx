@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { RackdCaseStudy } from "@/components/projects/RackdCaseStudy";
 
 export const metadata: Metadata = {
-  title: "Rackd — Vanshika Sharma",
+  title: "Rackd - Vanshika Sharma",
   description:
     "Inventory management for resellers selling across multiple marketplaces.",
 };

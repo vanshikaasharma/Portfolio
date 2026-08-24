@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Outfit, Playfair_Display, Silkscreen } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 
-const inter = Inter({
+const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -14,10 +14,16 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+const silkscreen = Silkscreen({
+  weight: ["400", "700"],
+  variable: "--font-pixel",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Vanshika Sharma — CS Student & Data Analyst",
+  title: "Vanshika Sharma - CS Student at UBC",
   description:
-    "Portfolio of Vanshika Sharma — Computer Science student at UBC, Data Analyst Co-op at DarkVision, and full-stack builder.",
+    "Portfolio of Vanshika Sharma - BSc Computer Science with AI student at UBC, building full-stack products and software systems.",
 };
 
 export default function RootLayout({
@@ -28,9 +34,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${outfit.variable} ${playfair.variable} ${silkscreen.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-background text-foreground">
+      <body className="min-h-full bg-background text-foreground selection:bg-[#3A3E6C] selection:text-[#f0f2fa]">
         <Navbar />
         {children}
       </body>

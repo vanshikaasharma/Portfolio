@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps) {
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project" };
   return {
-    title: `${project.title} — Vanshika Sharma`,
+    title: `${project.title} - Vanshika Sharma`,
     description: project.description,
   };
 }

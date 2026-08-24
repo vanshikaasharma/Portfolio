@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Atmosphere } from "../Atmosphere";
 import { Reveal } from "../Reveal";
 import { CheckIcon, ChevronDownIcon } from "../icons";
 import { hackathons, type Hackathon } from "@/lib/site";
@@ -89,7 +90,8 @@ export function Hackathons() {
       id="hackathons"
       className="relative scroll-mt-24 overflow-hidden py-20 sm:py-28"
     >
-      <div className="mx-auto w-full max-w-4xl px-6 sm:px-8">
+      <Atmosphere variant="mist" />
+      <div className="relative mx-auto w-full max-w-4xl px-6 sm:px-8">
         <Reveal className="mb-12 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-hover">
             Competitions
@@ -98,7 +100,7 @@ export function Hackathons() {
             Hackathons.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
-            Places I&apos;ve built under pressure — including a winning
+            Places I&apos;ve built under pressure, including a winning
             datathon and a social-impact hackathon.
           </p>
         </Reveal>
