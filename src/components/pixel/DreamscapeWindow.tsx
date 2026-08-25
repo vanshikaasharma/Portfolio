@@ -217,7 +217,7 @@ export function DreamscapeWindow() {
                       Currently building
                     </p>
                     <p className="max-w-[15rem] font-pixel text-[10px] leading-relaxed text-[#959BB5]">
-                      Ultrasound pipelines, ML collab, analyst tooling
+                      Image + text retrieval for inspection case libraries
                     </p>
                   </div>
 
@@ -291,7 +291,7 @@ export function DreamscapeWindow() {
                   </div>
                   <div className="rounded border border-[#3A3E6C] bg-[#18203C]/90 p-2.5 pl-3 text-[10px] text-[#959BB5]">
                     <p className="text-[#CAD0E5]">
-                      Ultrasound pipeline data · ML researchers · analyst-facing tooling
+                      CBIR library · image &amp; text search · similar cases + metadata
                     </p>
                     <p className="mt-1.5">
                       <span className="text-[#F1BCF5]">status</span>

@@ -588,8 +588,9 @@ export const experience: Experience[] = [
     ],
     highlights: [
       "Analyzed complex ultrasound imaging data and built Python automation to streamline feature validation, anomaly analysis, and recurring analytical workflows.",
-      "Built a full-stack internal reference library using React, FastAPI, CLIP, and vector search, enabling analysts to retrieve visually and semantically similar historical examples for more consistent analysis and quality control.",
-      "Supported machine learning research, software QA, and analytics initiatives, contributing to model-development workflows, product validation, and Power BI dashboards for internal reporting and decision-making.",
+      "Built a content-based image retrieval system for an internal library of industrial inspection imagery: search by uploading a reference image or typing a text description, then surface the most visually similar historical cases with their metadata.",
+      "Shipped the retrieval stack end-to-end with React, FastAPI, CLIP embeddings, and vector search so analysts can find comparable examples faster for review and quality control.",
+      "Supported machine learning research, software QA, and analytics initiatives, contributing to model-development workflows, product validation, and Power BI dashboards for internal reporting.",
     ],
   },
   {
